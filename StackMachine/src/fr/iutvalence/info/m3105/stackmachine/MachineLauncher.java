@@ -65,7 +65,7 @@ public class MachineLauncher
 		
 		IO ioSystem = new IO(System.in, System.out, System.err);
 		CPU cpu = new CPU();		
-		Machine machine = new Machine(cpu, programMemory, expStack, callStack, ioSystem );
+		Machine machine = new Machine(cpu, programMemory, expStack, callStack, ioSystem);
 		try
 		{
 			machine.loadProgram(program);

@@ -12,7 +12,7 @@ public class IO
 	private BufferedReader in;
 	private PrintStream out;
 	private PrintStream err;
-	
+
 	public IO(InputStream inStream, OutputStream outStream, OutputStream errStream)
 	{
 		super();
@@ -24,9 +24,9 @@ public class IO
 	public void displayRuntimeError(String string)
 	{
 		System.err.println(string);
-		
+
 	}
-	
+
 	public void displayProgramTermination()
 	{
 		System.out.println("(HALT)");
@@ -38,12 +38,12 @@ public class IO
 		String line = this.in.readLine();
 		this.out.println();
 		return Integer.parseInt(line);
-		
+
 	}
 
 	public void write(int op)
 	{
-		this.out.println("> "+op);
-		
+		this.out.println("> " + op);
+
 	}
 }
