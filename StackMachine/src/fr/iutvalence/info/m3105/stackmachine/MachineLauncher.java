@@ -2,7 +2,6 @@ package fr.iutvalence.info.m3105.stackmachine;
 
 public class MachineLauncher
 {
-
 	public static void main(String[] args)
 	{
 		/*

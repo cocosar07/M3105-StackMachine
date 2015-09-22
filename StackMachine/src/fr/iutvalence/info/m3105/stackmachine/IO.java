@@ -13,7 +13,6 @@ public class IO
 	private PrintStream out;
 	private PrintStream err;
 	
-	
 	public IO(InputStream inStream, OutputStream outStream, OutputStream errStream)
 	{
 		super();
