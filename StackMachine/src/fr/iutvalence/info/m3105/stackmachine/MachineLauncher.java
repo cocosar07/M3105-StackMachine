@@ -54,7 +54,7 @@ public class MachineLauncher
 
 		try
 		{
-			programMemory = new Memory(0x00000000, 0x00000020);
+			programMemory = new MemoryW32A32(0x00000000, 0x00000020);
 			expStack = new Stack(16);
 			callStack = new Stack(16);
 		}
@@ -63,8 +63,8 @@ public class MachineLauncher
 			// Safely ignore this error, which is not one
 		}
 		
-		IO ioSystem = new IO(System.in, System.out, System.err);
-		CPU cpu = new CPU();		
+		IO ioSystem = new StandardIO(System.in, System.out, System.err);
+		CPU cpu = new CPU();	
 		Machine machine = new Machine(cpu, programMemory, expStack, callStack, ioSystem);
 		try
 		{

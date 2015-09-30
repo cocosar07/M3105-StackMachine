@@ -1,24 +1,13 @@
 package fr.iutvalence.info.m3105.stackmachine;
 
-public class Memory
+public interface Memory
 {
-	private int startAddress;
-	private int endAddress;
-	private Program program;
+	public abstract int getStartAddress();
 
-	public Memory(int startAddress, int endAddress)
-	{
-		this.startAddress = startAddress;
-		this.endAddress = endAddress;
-	}
+	public abstract int getEndAddress();
 
-	public int getStartAddress()
-	{
-		return this.startAddress;
-	}
+	public abstract void write(int currentAddress, int instructionParam) throws AddressOutOfBoundsException;
 
-	public void write(int currentAddress, int instructionParam)
-	{
-		
-	}
+	public abstract int read(int address) throws AddressOutOfBoundsException;
+
 }

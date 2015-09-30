@@ -1,7 +1,5 @@
 package fr.iutvalence.info.m3105.stackmachine;
 
-import java.io.IOException;
-
 public class CPU
 {
 	public final static int HALT = 0x00;
@@ -28,152 +26,143 @@ public class CPU
 	public final static int POP = 0x15;
 	
 	
-	private IO ioSystem;
-
-	// TODO something is missing here...
+	private StandardIO ioSystem;
+	private int programCounter;
+	private Memory programMemory;
+	private Stack expStack;
+	private Stack callStack;
 
 	public void run()
 	{
 		int opCode = 0;
-		try
+		while (true)
 		{
-			while (true)
+			System.err.print("@" + this.programCounter + ": ");
+			
+			switch (opCode)
+			{
+			case HALT:
+			{
+				System.err.println("HALT");
+				if(this.ioSystem != null)
+					this.ioSystem.displayProgramTermination();
+				
+				return;
+			}
+			case PUSH:
+			{
+				if(this.ioSystem != null)
+					this.ioSystem.write(opCode);
+				break;
+			}
+			case ADD:
 			{
 				// TODO something is missing here...
-
-				// System.err.print("@" + this.programCounter + ": ");
-				switch (opCode)
-				{
-				case HALT:
-				{
-					// System.err.println("HALT");
-					this.ioSystem.displayProgramTermination();
-					return;
-				}
-				case PUSH:
-				{
-					// TODO something is missing here...
-					break;
-				}
-				case ADD:
-				{
-					// TODO something is missing here...
-					break;
-				}
-				case SUB:
-				{
-					// TODO something is missing here...
-					break;
-				}
-				case MUL:
-				{
-					// TODO something is missing here...
-					break;
-				}
-				case DIV:
-				{
-					// TODO something is missing here...
-					break;
-				}
-				case MOD:
-				{
-					// TODO something is missing here...
-					break;
-				}
-				case NEG:
-				{
-					// TODO something is missing here...
-					break;
-				}
-				case LT:
-				{
-					// TODO something is missing here...
-					break;
-				}
-				case LE:
-				{
-					// TODO something is missing here...
-					break;
-				}
-				case GT:
-				{
-					// TODO something is missing here...
-					break;
-				}
-				case GE:
-				{
-					// TODO something is missing here...
-					break;
-				}
-				case EQ:
-				{
-					// TODO something is missing here...
-					break;
-				}
-				case NE:
-				{
-					// TODO something is missing here...
-					break;
-				}
-				case IN:
-				{
-					// TODO something is missing here...
-					break;
-				}
-				case OUT:
-				{
-					// TODO something is missing here...
-					break;
-				}
-				case CALL:
-				{
-					// TODO something is missing here...
-					break;
-				}
-				case RET:
-				{
-					// TODO something is missing here...
-					break;
-				}
-				case JP:
-				{
-					// TODO something is missing here...
-					break;
-				}
-				case JZ:
-				{
-					// TODO something is missing here...
-					break;
-				}
-				case DUP:
-				{
-					// TODO something is missing here...
-					break;
-				}
-				case POP:
-				{
-					// TODO something is missing here...
-					break;
-				}
-				default:
-				{
-					// TODO something is missing here...
-					return;
-				}
-				}
+				break;
 			}
-		} catch (AddressOutOfBoundsException e)
-		{
-			// TODO something is missing here...
-		} catch (IOException e)
-		{
-			// TODO something is missing here...
-		} catch (StackOverflowException e)
-		{
-			// TODO something is missing here...
-		} catch (StackUnderflowException e)
-		{
-			// TODO something is missing here...
+			case SUB:
+			{
+				// TODO something is missing here...
+				break;
+			}
+			case MUL:
+			{
+				// TODO something is missing here...
+				break;
+			}
+			case DIV:
+			{
+				// TODO something is missing here...
+				break;
+			}
+			case MOD:
+			{
+				// TODO something is missing here...
+				break;
+			}
+			case NEG:
+			{
+				// TODO something is missing here...
+				break;
+			}
+			case LT:
+			{
+				// TODO something is missing here...
+				break;
+			}
+			case LE:
+			{
+				// TODO something is missing here...
+				break;
+			}
+			case GT:
+			{
+				// TODO something is missing here...
+				break;
+			}
+			case GE:
+			{
+				// TODO something is missing here...
+				break;
+			}
+			case EQ:
+			{
+				// TODO something is missing here...
+				break;
+			}
+			case NE:
+			{
+				// TODO something is missing here...
+				break;
+			}
+			case IN:
+			{
+				// TODO something is missing here...
+				break;
+			}
+			case OUT:
+			{
+				// TODO something is missing here...
+				break;
+			}
+			case CALL:
+			{
+				// TODO something is missing here...
+				break;
+			}
+			case RET:
+			{
+				// TODO something is missing here...
+				break;
+			}
+			case JP:
+			{
+				// TODO something is missing here...
+				break;
+			}
+			case JZ:
+			{
+				// TODO something is missing here...
+				break;
+			}
+			case DUP:
+			{
+				// TODO something is missing here...
+				break;
+			}
+			case POP:
+			{
+				// TODO something is missing here...
+				break;
+			}
+			default:
+			{
+				// TODO something is missing here...
+				return;
+			}
+			}
+
+			System.out.println();
 		}
 	}
 
@@ -185,30 +174,27 @@ public class CPU
 
 	public void setPC(int address)
 	{
-		// TODO Auto-generated method stub
+		this.programCounter = address;
 		
 	}
 
 	public void wireToProgramMemory(Memory programMemory)
 	{
-		
+		this.programMemory = programMemory;
 	}
 
 	public void wireToExpStack(Stack expStack)
 	{
-		
-		
+		this.expStack = expStack;
 	}
 
 	public void wireToCallStack(Stack callStack)
 	{
-		
+		this.callStack = callStack;
 	}
 
 	public void wireToIoSubsystem(IO ioSystem2)
 	{
 		
 	}
-
-	// TODO something is missing here...
 }
