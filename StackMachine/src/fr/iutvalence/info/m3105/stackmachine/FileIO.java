@@ -34,7 +34,6 @@ public class FileIO implements IO
 			out.write(error);
 		} catch (IOException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

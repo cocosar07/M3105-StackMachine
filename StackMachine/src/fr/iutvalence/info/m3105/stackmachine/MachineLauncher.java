@@ -55,8 +55,8 @@ public class MachineLauncher
 		try
 		{
 			programMemory = new MemoryW32A32(0x00000000, 0x00000020);
-			expStack = new Stack(16);
-			callStack = new Stack(16);
+			expStack = new Stack32b(16);
+			callStack = new Stack32b(16);
 		}
 		catch (InvalidParametersException e)
 		{

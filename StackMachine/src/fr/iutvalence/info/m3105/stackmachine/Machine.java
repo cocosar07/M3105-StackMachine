@@ -44,5 +44,4 @@ public class Machine
 		cpu.run();
 		System.out.println("(end of program execution)");
 	}
-
 }
